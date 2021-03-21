@@ -5,6 +5,11 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.4.30"
 	kotlin("plugin.spring") version "1.4.30"
+	id("org.jetbrains.kotlin.plugin.noarg") version "1.4.31"
+}
+
+noArg {
+	annotation("com.example.bookManagement.annotations.NoArg")
 }
 
 group = "com.example"
