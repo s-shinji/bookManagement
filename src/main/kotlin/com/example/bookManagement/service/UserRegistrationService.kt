@@ -1,6 +1,6 @@
 package com.example.bookManagement.service
 
-import com.example.bookManagement.entity.User
+import com.example.bookManagement.entity.UserRegistration
 import com.example.bookManagement.mapper.UserRegistrationMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -15,7 +15,7 @@ class UserRegistrationService {
     @Autowired
     lateinit var passwordEncoder: PasswordEncoder
 
-    fun registerUser(regUserInfo: User) {
+    fun registerUser(regUserInfo: UserRegistration) {
         regUserInfo.password = passwordEncoder.encode(regUserInfo.password)
         userRegistrationMapper.registerUser(regUserInfo);
     }

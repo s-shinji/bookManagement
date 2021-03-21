@@ -1,6 +1,6 @@
 package com.example.bookManagement.controller
 
-import com.example.bookManagement.entity.User
+import com.example.bookManagement.entity.UserRegistration
 import com.example.bookManagement.service.UserRegistrationService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.ModelAttribute
@@ -13,7 +13,7 @@ class UserRegistrationController {
     lateinit var userRegistrationService: UserRegistrationService
 
     @PostMapping("/register")
-    fun registerUser(@ModelAttribute regUserInfo: User): Int {
+    fun registerUser(@ModelAttribute regUserInfo: UserRegistration): Int {
         if(userRegistrationService.findByName(regUserInfo.name.toString()) == "すでに登録済みのユーザー名です")
             return 1
         if(userRegistrationService.findByEmail(regUserInfo.email.toString()) == "すでに登録済みのメールアドレスです")
