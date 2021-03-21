@@ -24,7 +24,7 @@ class UserRegistrationService {
         else return "すでに登録済みのユーザー名です"
     }
     fun findByEmail(email: String): String? {
-        if(userRegistrationMapper.findByName(email) == null) return "OK"
+        if(userRegistrationMapper.findByEmail(email) == null) return "OK"
         else return "すでに登録済みのメールアドレスです"
     }
 
