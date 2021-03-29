@@ -4,6 +4,9 @@ CREATE TABLE IF NOT EXISTS books (
     author VARCHAR(50) NOT NULL,
     type VARCHAR(50) NOT NULL,
     user_id int NOT NULL,
+    created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
 
     FOREIGN KEY (user_id)
         REFERENCES users(id)

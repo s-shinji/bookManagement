@@ -1,8 +1,11 @@
 CREATE TABLE IF NOT EXISTS reviews (
     id int NOT NULL AUTO_INCREMENT,
-    review VARCHAR(500) NOT NULL,
+    reviewPoint double NOT NULL,
+    reviewSentence VARCHAR(500) NOT NULL,
     book_id int NOT NULL,
     user_id int NOT NULL,
+    created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
     FOREIGN KEY (book_id)
         REFERENCES books(id)
