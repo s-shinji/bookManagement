@@ -29,7 +29,7 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
             .failureUrl("/login-error")
             .permitAll()
         http.logout()
-            .logoutSuccessUrl("/logout")
+            .logoutSuccessUrl("/login")
             .permitAll()
         http.csrf().disable().authorizeRequests()
             .antMatchers("/css/**", "/images/**", "/js/**").permitAll()
