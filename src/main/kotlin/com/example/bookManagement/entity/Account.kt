@@ -2,7 +2,7 @@ package com.example.bookManagement.entity
 
 import com.example.bookManagement.annotations.NoArg
 
-@NoArg
+//@NoArg
 //DBに格納されているアカウント情報のエンティティ
 data class Account(
     var id: Int? = null,

@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS reviews (
     id int NOT NULL AUTO_INCREMENT,
     reviewPoint double NOT NULL,
-    reviewSentence VARCHAR(500) NOT NULL,
+    reviewSentence VARCHAR(500),
     book_id int NOT NULL,
     user_id int NOT NULL,
     created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
