@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param
 
 @Mapper
 interface ImageMapper {
-    @Insert("INSERT INTO images(image,book_id) " +
+    @Insert("INSERT INTO images(image, book_id) " +
                     "VALUES(#{image}, #{bookId})")
-    fun insertImage(@Param("bookId") bookId: Int, @Param("image") images: String)
+    fun insertImage(@Param("image") image: String, @Param("bookId") bookId: Int?)
 }

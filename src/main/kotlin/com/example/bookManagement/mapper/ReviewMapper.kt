@@ -11,7 +11,7 @@ interface ReviewMapper {
                     "VALUES(#{reviewPoint}, #{reviewSentence}, #{bookId}, #{userId})")
     fun insertReview(@Param("reviewPoint") reviewPoint: Double,
                      @Param("reviewSentence") reviewSentence: String?,
-                     @Param("bookId") bookId: Int,
+                     @Param("bookId") bookId: Int?,
                      @Param("userId") userId: Int?
                     )
 }
