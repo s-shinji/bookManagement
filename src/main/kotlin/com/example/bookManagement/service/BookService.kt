@@ -1,13 +1,16 @@
 package com.example.bookManagement.service
 
-import com.example.bookManagement.entity.Book
+import com.example.bookManagement.entity.BookDetail
 import com.example.bookManagement.entity.BookForm
+import com.example.bookManagement.entity.BookSummary
+import com.example.bookManagement.entity.Books
 import com.example.bookManagement.mapper.BookMapper
 import com.example.bookManagement.mapper.ImageMapper
 import com.example.bookManagement.mapper.ReviewMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.awt.print.Book
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -60,7 +63,25 @@ class BookService {
         reviewMapper.insertReview(bookForm.reviewPoint, bookForm.reviewSentence, lastBookId, bookForm.userId)
     }
 
-    fun getBooks(userId: Int): List<Book> {
+    fun getBooks(userId: Int): List<Books> {
         return bookMapper.getBooks(userId)
+    }
+
+    fun getBook(userId: Int, bookId: Int): BookSummary {
+        var bookDetail    = bookMapper.getBook(userId, bookId)
+        var othersReviews = reviewMapper.getReviews(userId, bookId)
+        var reviewAverage = 0.0
+        if (othersReviews.isNotEmpty()) {
+            //全てのレビューをfor文で取り出し、平均値をbookDetailsに格納する処理を記述
+            var sum = 0.0
+            var num = 0
+            for (review in othersReviews) {
+                sum += review.reviewPoint
+                num++
+            }
+            reviewAverage = sum / num
+        }
+        var bookSummary   = BookSummary(bookDetail, othersReviews, reviewAverage)
+        return bookSummary
     }
 }

@@ -1,17 +1,11 @@
 package com.example.bookManagement.controller
 
-import com.example.bookManagement.entity.Book
-import com.example.bookManagement.entity.BookForm
-import com.example.bookManagement.entity.DbUserDetails
+import com.example.bookManagement.entity.*
 import com.example.bookManagement.service.BookService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.*
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 @RestController
@@ -27,7 +21,12 @@ class BookController {
     }
 
     @GetMapping("api/user/{id}/books")
-    fun getBooks(@PathVariable("id") userId: Int): List<Book> {
+    fun getBooks(@PathVariable("id") userId: Int): List<Books> {
         return bookService.getBooks(userId)
+    }
+
+    @GetMapping("api/user/{userId}/book/{bookId}")
+    fun getBook(@PathVariable("userId") userId: Int, @PathVariable("bookId") bookId: Int): BookSummary {
+        return bookService.getBook(userId, bookId)
     }
 }
