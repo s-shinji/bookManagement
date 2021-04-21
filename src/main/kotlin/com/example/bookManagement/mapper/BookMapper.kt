@@ -18,7 +18,8 @@ interface BookMapper {
                     "WHERE books.user_id = #{userId}")
     fun getBooks(userId: Int): List<Books>
 
-    @Select("SELECT books.id, title, author, books.user_id, image, reviewPoint, reviewSentence ,reviews.book_id FROM books " +
+    @Select("SELECT books.id, title, author, books.user_id, icon, image, reviewPoint, reviewSentence ,reviews.book_id FROM books " +
+                    "INNER JOIN users ON books.user_id = users.id " +
                     "INNER JOIN images  ON books.id = images.book_id " +
                     "INNER JOIN reviews ON books.id = reviews.id " +
                     "WHERE books.user_id = #{userId} AND books.id = #{bookId}")

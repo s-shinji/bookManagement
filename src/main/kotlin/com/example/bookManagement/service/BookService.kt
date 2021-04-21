@@ -43,7 +43,7 @@ class BookService {
         //第一引数のパスに第二引数で指定したファイル名でオブジェクト作成？
         val file = File("/Users/shinji/bookManagement/frontend/public/images", "${dateStr}_${bookForm.image?.originalFilename}")
         try {
-            //画像データを指定したパスに指定したファイル名・拡張子で配置
+            //画像データを、指定したパスに指定したファイル名・拡張子で配置
             bookForm.image?.transferTo(file)
         } catch (e: IllegalStateException) {
             e.printStackTrace()
