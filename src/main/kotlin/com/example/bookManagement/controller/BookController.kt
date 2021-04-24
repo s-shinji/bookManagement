@@ -29,4 +29,11 @@ class BookController {
     fun getBook(@PathVariable("userId") userId: Int, @PathVariable("bookId") bookId: Int): BookSummary {
         return bookService.getBook(userId, bookId)
     }
+
+    @PostMapping("api/user/{userId}/book/{bookId}/registerReview")
+    fun registerReview(@ModelAttribute reviewForm: ReviewForm) {
+        val auth: Authentication = SecurityContextHolder.getContext().authentication
+        reviewForm.userId = (auth.principal as DbUserDetails).account.id
+        return bookService.registerReview(reviewForm)
+    }
 }

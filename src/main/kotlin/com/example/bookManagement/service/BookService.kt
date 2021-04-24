@@ -1,9 +1,6 @@
 package com.example.bookManagement.service
 
-import com.example.bookManagement.entity.BookDetail
-import com.example.bookManagement.entity.BookForm
-import com.example.bookManagement.entity.BookSummary
-import com.example.bookManagement.entity.Books
+import com.example.bookManagement.entity.*
 import com.example.bookManagement.mapper.BookMapper
 import com.example.bookManagement.mapper.ImageMapper
 import com.example.bookManagement.mapper.ReviewMapper
@@ -83,5 +80,10 @@ class BookService {
         }
         var bookSummary   = BookSummary(bookDetail, othersReviews, reviewAverage)
         return bookSummary
+    }
+
+    fun registerReview(reviewForm: ReviewForm) {
+        return reviewMapper.insertReview(reviewForm.reviewPoint, reviewForm.reviewSentence,
+                                         reviewForm.bookId, reviewForm.userId)
     }
 }
