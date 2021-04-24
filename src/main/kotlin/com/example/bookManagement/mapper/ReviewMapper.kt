@@ -16,7 +16,7 @@ interface ReviewMapper {
                      @Param("bookId") bookId: Int?,
                      @Param("userId") userId: Int?
                     )
-    @Select("SELECT reviewPoint, reviewSentence, user_id, icon FROM reviews " +
+    @Select("SELECT reviewPoint, reviewSentence, user_id, name, icon FROM reviews " +
                     "INNER JOIN users ON user_id = users.id " +
                     "WHERE user_id != #{userId} AND book_id = #{bookId}")
     fun getReviews(userId: Int, bookId: Int): List<Reviews>

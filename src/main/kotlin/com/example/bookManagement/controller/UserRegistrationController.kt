@@ -1,9 +1,11 @@
 package com.example.bookManagement.controller
 
+import com.example.bookManagement.entity.UserIconForm
 import com.example.bookManagement.entity.UserRegistration
 import com.example.bookManagement.service.UserRegistrationService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -23,6 +25,11 @@ class UserRegistrationController {
 
         userRegistrationService.registerUser(regUserInfo)
         return 0;
+    }
+
+    @PostMapping("/api/user/{id}")
+    fun updateUserIcon(@ModelAttribute userIconForm: UserIconForm, @PathVariable("id") userId: Int) {
+        userRegistrationService.updateUserIcon(userIconForm, userId)
     }
 
 }

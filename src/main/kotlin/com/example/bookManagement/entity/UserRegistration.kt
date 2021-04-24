@@ -8,5 +8,6 @@ data class UserRegistration(
     val email: String,
     //パスワードのみ、エンコードをするためvarを使用
     var password: String,
-    val passwordConfirmation: String
+    val passwordConfirmation: String,
+    var userIcon: String? = null
 )

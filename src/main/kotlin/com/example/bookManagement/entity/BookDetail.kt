@@ -10,6 +10,7 @@ data class BookDetail(
      */
     val userId: Int,
     //usersテーブルから取得
+    val name: String,
     val userIcon: String,
     //imagesテーブルから取得
     val image: String,

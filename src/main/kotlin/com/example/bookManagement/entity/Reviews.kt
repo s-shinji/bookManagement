@@ -5,5 +5,6 @@ data class Reviews(
     val reviewSentence: String?,
     val userId: Int,
     //usersテーブルから取得
+    val name: String,
     val userIcon: String
 )
