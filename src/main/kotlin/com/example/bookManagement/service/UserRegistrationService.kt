@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.io.File
 import java.io.IOException
+import java.util.*
 
 @Service
 @Transactional
@@ -32,22 +33,28 @@ class UserRegistrationService {
         else return "すでに登録済みのメールアドレスです"
     }
     fun updateUserIcon(userIconForm: UserIconForm,userId: Int) {
-        val beforeChangeIcon = userRegistrationMapper.findUserIcon(userId)
-        if(beforeChangeIcon != "default.jpeg") {
-            val deleteFile = File("/Users/shinji/bookManagement/frontend/public/images/${beforeChangeIcon}")
-            deleteFile.delete()
-        }
-        val file = File("/Users/shinji/bookManagement/frontend/public/images", "${userIconForm.userIcon?.originalFilename}")
-        try {
-            userIconForm.userIcon?.transferTo(file)
-            userRegistrationMapper.updateUserIcon(userIconForm.userIcon.originalFilename, userId)
-        } catch (e: IllegalStateException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
+//        画像をパスに保存
+//        val beforeChangeIcon = userRegistrationMapper.findUserIcon(userId)
+//        if(beforeChangeIcon != "default.jpeg") {
+//            val deleteFile = File("/Users/shinji/bookManagement/frontend/public/images/${beforeChangeIcon}")
+//            deleteFile.delete()
+//        }
+//        val file = File("/Users/shinji/bookManagement/frontend/public/images", "${userIconForm.userIcon?.originalFilename}")
+//        try {
+//            userIconForm.userIcon?.transferTo(file)
+//            userRegistrationMapper.updateUserIcon(data.toString(), userId)
+//        } catch (e: IllegalStateException) {
+//            e.printStackTrace()
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        }
 
-
+        //画像をDBに保存
+        var data = StringBuffer()
+        val base64 = Base64.getEncoder().encodeToString(userIconForm.userIcon.bytes)
+        data.append("data:image/;base64,")
+        data.append(base64)
+        userRegistrationMapper.updateUserIcon(data.toString(), userId)
     }
 
 }
