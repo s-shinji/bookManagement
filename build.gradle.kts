@@ -36,7 +36,6 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4")
-//	implementation("org.springframework.session:spring-session-jdbc")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("mysql:mysql-connector-java")
@@ -52,9 +51,9 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
+//tasks.withType<Test> {
+//	useJUnitPlatform()
+//}
 
 //Exception in thread "main" java.lang.NoClassDefFoundError対策
 tasks.jar {

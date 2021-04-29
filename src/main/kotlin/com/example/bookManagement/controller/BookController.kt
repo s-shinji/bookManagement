@@ -15,8 +15,6 @@ class BookController {
 
     @PostMapping("/api/registerBook")
     fun registerBook(@ModelAttribute bookForm: BookForm) {
-        val auth: Authentication = SecurityContextHolder.getContext().authentication
-        bookForm.userId = (auth.principal as DbUserDetails).account.id
         bookService.insertBook(bookForm)
     }
 

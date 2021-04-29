@@ -5,6 +5,8 @@ import com.example.bookManagement.mapper.BookMapper
 import com.example.bookManagement.mapper.ImageMapper
 import com.example.bookManagement.mapper.ReviewMapper
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.Authentication
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.awt.print.Book
@@ -24,35 +26,49 @@ class BookService {
     lateinit var reviewMapper: ReviewMapper;
 
     fun insertBook(bookForm: BookForm) {
+        //ログインユーザIDをbookFormに格納する
+        val auth: Authentication = SecurityContextHolder.getContext().authentication
+        bookForm.userId = (auth.principal as DbUserDetails).account.id
+
         //booksテーブルに書籍情報を追加
         bookMapper.insertBook(bookForm)
         //insert時にセットされたidを取得する
         val lastBookId = bookForm.id
 
-        //指定したフォルダまでの絶対パス取得
-        //val filePath = File("images")
-        //val str: String = filePath.absolutePath
-
         //指定パスに画像ファイルを保存
-        val postDate: Date = Date()
-        val sdf: SimpleDateFormat = SimpleDateFormat("yyyyMMddHHmmssSS")
-        val dateStr = sdf.format(postDate)
-        //第一引数のパスに第二引数で指定したファイル名でオブジェクト作成？
-        val file = File("/Users/shinji/bookManagement/frontend/public/images", "${dateStr}_${bookForm.image?.originalFilename}")
-        try {
-            //画像データを、指定したパスに指定したファイル名・拡張子で配置
-            bookForm.image?.transferTo(file)
-        } catch (e: IllegalStateException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        //imagesテーブルに画像ファイルのパス情報を追加
+//        val postDate: Date = Date()
+//        val sdf: SimpleDateFormat = SimpleDateFormat("yyyyMMddHHmmssSS")
+//        val dateStr = sdf.format(postDate)
+//        //第一引数のパスに第二引数で指定したファイル名でオブジェクト作成？
+//        val file = File("/Users/shinji/bookManagement/frontend/public/images", "${dateStr}_${bookForm.image?.originalFilename}")
+//        try {
+//            //画像データを、指定したパスに指定したファイル名・拡張子で配置
+//            bookForm.image?.transferTo(file)
+//        } catch (e: IllegalStateException) {
+//            e.printStackTrace()
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        }
+//        //imagesテーブルに画像ファイルのパス情報を追加
+//        lateinit var image: String;
+//        if(bookForm.image == null) {
+//            image = "noImage.jpg"
+//        } else {
+//            image = "${dateStr}_${bookForm.image?.originalFilename}"
+//        }
+//        imageMapper.insertImage(image, lastBookId)
+
+
+        //画像をDBに保存
         lateinit var image: String;
         if(bookForm.image == null) {
             image = "noImage.jpg"
         } else {
-            image = "${dateStr}_${bookForm.image?.originalFilename}"
+            val data = StringBuffer()
+            val base64 = Base64.getEncoder().encodeToString(bookForm.image.bytes)
+            data.append("data:image/;base64,")
+            data.append(base64)
+            image = data.toString()
         }
         imageMapper.insertImage(image, lastBookId)
 
