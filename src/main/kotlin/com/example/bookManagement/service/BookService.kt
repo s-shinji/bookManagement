@@ -99,7 +99,11 @@ class BookService {
     }
 
     fun registerReview(reviewForm: ReviewForm) {
-        return reviewMapper.insertReview(reviewForm.reviewPoint, reviewForm.reviewSentence,
+        reviewMapper.insertReview(reviewForm.reviewPoint, reviewForm.reviewSentence,
                                          reviewForm.bookId, reviewForm.userId)
+    }
+
+    fun updateStatus(reservationStatus: ReservationStatus) {
+        bookMapper.updateStatus(reservationStatus)
     }
 }

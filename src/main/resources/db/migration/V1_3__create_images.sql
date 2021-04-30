@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS images (
     id int NOT NULL AUTO_INCREMENT,
-    image VARCHAR(255) NOT NULL,
+    image mediumblob NOT NULL,
     book_id int NOT NULL,
     created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

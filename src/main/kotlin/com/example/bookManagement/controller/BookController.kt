@@ -32,6 +32,11 @@ class BookController {
     fun registerReview(@ModelAttribute reviewForm: ReviewForm) {
         val auth: Authentication = SecurityContextHolder.getContext().authentication
         reviewForm.userId = (auth.principal as DbUserDetails).account.id
-        return bookService.registerReview(reviewForm)
+        bookService.registerReview(reviewForm)
+    }
+
+    @PostMapping("api/reservationStatus/{bookId}")
+    fun updateStatus(@ModelAttribute reservationStatus: ReservationStatus) {
+        bookService.updateStatus(reservationStatus)
     }
 }
