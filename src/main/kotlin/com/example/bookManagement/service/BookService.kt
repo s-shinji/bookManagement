@@ -92,7 +92,8 @@ class BookService {
                 sum += review.reviewPoint
                 num++
             }
-            reviewAverage = sum / num
+            //少数第3位を四捨五入
+            reviewAverage = Math.round((sum / num) * 100.0) / 100.0
         }
         var bookSummary   = BookSummary(bookDetail, othersReviews, reviewAverage)
         return bookSummary
