@@ -1,0 +1,17 @@
+.bookIndex {
+  @include main-back-ground;
+  .bookIndexImage {
+    margin-top: 1%;
+    width: 25%;
+    // height: 20rem;
+    box-shadow: 5px 10px 5px grey;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .bookIndex {
+    .bookIndexImage {
+      width: 33.3%;
+    }
+  }
+}

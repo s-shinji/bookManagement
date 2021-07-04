@@ -1,0 +1,18 @@
+$main-background-color: #FFF8DC;
+$main-color: #328ef1;
+
+@mixin slack-button($backgroundColor) {
+  background-color: $backgroundColor;
+  padding: 2%;
+  border-radius: 10px;
+  color: white;
+  margin-top: 10%;
+  font-weight: bold;
+}
+
+@mixin main-back-ground {
+  background-color: $main-background-color;
+  min-height: 100vh;
+  height: 100%;
+  padding-top: 30px
+}

@@ -1,0 +1,16 @@
+.header {
+  background-color: $main-color;
+  height: 30px;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  &__link {
+    font-size: 1.3rem;
+    color: white;
+    margin: 0 1%;
+  }
+  &__link:hover{
+    color: rgb(54, 54, 54);
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,110 @@
+.reviewRegistrationContainer {
+  @include main-back-ground;
+  .reviewRegistration {
+    height: calc(100vh - 30px);
+    width: 60%;
+    margin: 0 auto;
+    padding: 8% 3% 3% 3%;
+    background-color: white;
+    &__box {
+      height: 100%;
+  
+  
+      .otherInfoBox {
+        display: flex;
+  
+        .reviewPoint {
+          background-color: white;
+          padding: 0.5rem;
+          margin-left: 2rem;
+        }
+        .reviewPointText {
+          font-size: 2rem;
+          margin-left: 1rem;
+        }
+  
+        .reviewTextArea {
+          height: 20rem;
+          width: 60%;
+          margin-left: 0.5rem;
+        }
+      }
+  
+      .submitBtn {
+        height: 7%;
+        width: 15%;
+        background-color: $main-color;
+        text-align: center;
+        border-radius: 5%;
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        margin-top: 3rem;
+      }
+  
+    }
+  }
+}
+
+input{
+  background-color: white;
+}
+
+textarea {
+  background-color: white;
+}
+
+p {
+  margin: 0;
+  font-size: 1.5rem;
+}
+hr {
+  color: $main-color;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .reviewRegistrationContainer {
+    .reviewRegistration {
+      width: 65%;
+      padding-top: 10%;
+      .otherInfoBox {
+        .reviewPoint {
+          margin-left: 0px;
+        }
+
+        .reviewTextArea {
+          margin-left: 0px;
+        }
+
+
+        p{
+          margin-right: 2rem;
+        }
+      }
+      .review {
+        p{
+          margin-right: 0.5rem;
+        }
+      }
+
+      .submitBtn {
+        margin-top: 1rem;
+      }
+
+    }
+  }
+}
+@media screen and (max-width:767px) {
+  .reviewRegistrationContainer {
+    .reviewRegistration {
+      width:100%;
+      padding-top: 15%;
+
+      .submitBtn {
+        margin-top: 0.1rem;
+      }
+
+
+    }
+  }
+}

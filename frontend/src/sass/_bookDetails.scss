@@ -1,0 +1,188 @@
+.bookDetailsContainer {
+  @include main-back-ground;
+  .bookDetails {
+    width: 65%;
+    min-height: calc(100vh - 30px);
+    height: 100%;
+    margin: 0 auto;
+    background-color: white;
+    &__top {
+      // background-color: #FFDAB9;
+      &__upper {
+        padding: 3% 0 5% 20%;
+        background: linear-gradient(to bottom right, $main-color, #ADD8E6);
+        .bookInfoBox {
+          display: flex;
+          .bookImg {
+            width: 35%;
+            background-color: white;
+          }
+          &__right {
+            width: 100%;
+            padding-top: 5%;
+            margin-left: 5%;
+            .bookTitle {
+              color: white;
+              font-size: 50px;
+            }
+            .bookAuthor {
+              display: flex;
+              color: white;
+              font-size: 30px;
+  
+              .authorIcon {
+                margin-top:10px;
+                margin-right: 10px;
+              }
+  
+            }
+            .reservationButton {
+              @include slack-button($main-color)
+            }
+            .returnButton {
+              @include slack-button(#32CD32)
+            }
+          }
+        }
+      }
+      &__lower {
+        display: flex;
+        cursor: pointer;
+        background-color: #F0F8FF;
+        div {
+          width: 50%;
+          font-size: 30px;
+          text-align: center;
+        }
+        #myReviewTab {
+          border-right: 3px solid gray;
+          width: 50.5%;
+        }
+        .reviewTab {
+          color: red;
+          border-bottom: 3px red solid;
+        }
+      }
+    }
+    &__myReview {
+      height: 200px;
+      // background-color: green;
+      display: flex;
+      align-items: center;
+      background-color: #F5F5F5;
+      .myReviewBox {
+        display: flex;
+        margin-left: 20%;
+        width: 20rem;
+        .myImg {
+          display: block;
+          height: 7rem;
+          width: 7rem;
+          background-color: white;
+        }
+        .myInfoBox {
+          font-size: 130%;
+          width: 40rem;
+          margin-left: 1rem;
+          &__name {
+            font-size: 2rem;
+          }
+          .myReviewPointBox {
+            display: flex;
+            align-items: center;
+            .myReviewPoint {
+              margin-bottom: 0.3rem;
+            }
+            .myReviewPointText {
+              font-size: 2rem;
+              margin-left: 1rem
+            }
+        }
+        }
+      }
+    }
+    &__othersReviews {
+      padding-top: 2.5%;
+      margin-bottom: 2.5%;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      background-color: #F5F5F5;
+      .reviewAverageBox {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .reviewAverageText {
+          font-size: 2rem;
+          margin-left: 1rem;
+        }  
+      }
+      .newReviewButton {
+        display: block;
+        text-decoration: none;
+        width: 270px;
+        margin: 0 auto;
+        font-size: 30px;
+        background-color: $main-color;
+        cursor: pointer;
+        color: white;
+        border-radius: 5rem;
+      }
+    }
+    &__bottom {
+      // background-color: blue;
+      .title {
+        font-size: 120%;
+        font-weight: bold;
+        margin-left: 20%;
+      }
+      .myReviewSentence {
+        margin-left: 20%;
+      }
+      .othersReviewsBox {
+        .othersInfoBox {
+          display: flex;
+          margin: 5rem 0 0 12rem;
+          img.othersImg {
+            height: 7rem;
+            width: 7rem;
+          }
+          .othersInfo {
+            margin-left: 1rem;
+            &__name {
+              font-size: 2rem;
+            }
+            .othersReviewPointBox {
+              display: flex;
+              align-items: center;
+              .othersReviewPointText {
+                font-size: 2rem;
+                margin-left: 1rem
+              }
+            }
+          }
+        }
+        .otherReviewSentences {
+          margin: 1rem 0 0 12rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .bookDetailsContainer {
+    .bookDetails {
+      width: 75%;
+
+    }
+  }
+}
+@media screen and (max-width:767px) {
+  .bookDetailsContainer {
+    .bookDetails {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,163 @@
+.bookRegistrationContainer {
+  @include main-back-ground;
+  padding-top: 2%;
+  .bookRegistration {
+    width: 60%;
+    height: calc(100vh - 25px);
+    margin: 0 auto;
+    padding: 3%;
+    background-color: white;
+    &__box {
+      height: 100%;
+      // display: flex;
+      // flex-direction: column;
+      // background-color: aqua;
+  
+      &__upper {
+        height: 90%;
+        display: flex;
+        // background-color: red;
+  
+        .imageBox {
+          height: 50%;
+          width: 50%;
+          // background-color: green;
+          border: 2px $main-color dashed;
+  
+          #bookImage {
+            display: none;
+          }
+          #imageIcon {
+            height: 50px;
+            width: 50px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+          }
+          .previewImage {
+            position: relative;
+            bottom: 55px;
+            right: 5px;
+            height: 105%;
+            width: 105%;
+            background-color: white;
+          }
+        }
+    
+        .otherInfoBox {
+          height: 100%;
+          width: 70%;
+          padding-left: 5%;
+          // background-color: yellow;
+          hr {
+            border-color: $main-color;
+            margin: 5px 0px;
+          }
+  
+  
+          &__box {
+            height: 10%;
+            margin-bottom: 1rem;
+            
+            &__label {
+              width: 8rem;
+              
+              .bookType {
+                width: 7rem;
+                border-radius: 5%;
+                padding-left: 35%;
+                border: 1px solid gray;
+              }  
+              .selectIcon {
+                position: relative;
+                top: 0.15rem;
+                right: 1.5rem;
+              }            
+            }
+            .reviewPointBox {
+              display: flex;
+              align-items: center;
+              .reviewPoint {
+                display: block;
+                width: 7.85rem;
+                height: 1.7rem;
+                border-radius: 5%;
+                background-color: white;
+              }
+              .reviewPointText {
+                font-size: 1.5rem;
+                margin-left: 1rem;
+              }
+            }
+            .reviewTextArea {
+              height: 19rem;
+              width: 100%;
+            }
+  
+          }
+  
+          .review {
+            height: 60%;
+          }
+  
+  
+        }
+      }
+      .submitBtn {
+        height: 7%;
+        width: 15%;
+        background-color: $main-color;
+        text-align: center;
+        border-radius: 5%;
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        margin-top: 4.5%;
+      }
+  
+    }
+  }
+}
+
+input{
+  border: 1px solid gray;
+}
+
+textarea {
+  border: 1px solid gray;
+}
+
+p {
+  margin: 0;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .bookRegistrationContainer {
+    .bookRegistration {
+      // background-color: yellow;
+      width: 65%;
+      height: calc(100vh - 15px);
+      .submitBtn {
+        margin-top: 3%;
+      }
+
+    }
+  }
+}
+@media screen and (max-width:767px) {
+  .bookRegistrationContainer {
+    .bookRegistration {
+      // background-color: blue;
+      width:100%;
+      height: calc(100vh - 10px);
+      padding-top: 6%;
+      .submitBtn {
+        margin-top: 2.5%;
+      }
+
+
+    }
+  }
+}
